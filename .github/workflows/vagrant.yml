@@ -1,0 +1,25 @@
+---
+name: Vagrant Build
+on: push
+jobs:
+  pytest:
+    name: Run build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Add key
+        run: curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+      - name: Add repo
+        run: sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+      - name: Apt update
+        run: sudo apt-get update
+      - name: Install virtualbox
+        run: sudo apt-get install virtualbox
+      - name: Install vagrant
+        run: sudo apt-get install vagrant
+      - name: Clone bitcoin repo
+        run: git clone https://github.com/bitcoin/bitcoin.git
+      - name: Copy Vagrantfile
+        run: cp Vagrantfile bitcoin/
+      - name: Setup VM
+        run: cd bitcoin && vagrant up
