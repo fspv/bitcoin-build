@@ -14,9 +14,9 @@ Use this [manual](https://www.vagrantup.com/docs/installation)
 2. CD into bitcoin repo root. Copy `Vagrantfile` from this repo.
 3. Build VM: `vagrant up`.
 4. SSH intor vm: `vagrant ssh`
-5. Switch to the same user you ran vagrant from. `sudo su - username`
 6. Now you can build bitcoin source:
     ```bash
+    cd /vagrant
     ./autogen.sh
     ./configure
     make -j 8
