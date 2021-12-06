@@ -40,6 +40,7 @@ Vagrant.configure("2") do |config|
     apt-get install -y virtualenv
     apt-get install -y sudo
     apt-get install -y bash
+    apt-get install -y gcovr
 
     cd / && virtualenv -p python3 venv
     source /venv/bin/activate && pip install pyzmq
